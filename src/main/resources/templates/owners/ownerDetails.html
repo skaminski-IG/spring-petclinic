@@ -61,14 +61,16 @@
         <div class="card-header">
           <span class="fa fa-paw me-2" aria-hidden="true"></span>
           <strong th:text="${pet.name}"></strong>
-          <span class="badge bg-secondary ms-2" th:text="${pet.type}"></span>
+          <span class="badge bg-secondary ms-2" th:text="${pet.type}" th:attr="aria-label='Pet type: ' + ${pet.type}"></span>
         </div>
         <div class="card-body">
-          <p class="mb-1">
-            <span class="fa fa-birthday-cake text-muted me-1" aria-hidden="true"></span>
-            <strong th:text="#{birthDate}">Birth Date</strong>:
-            <span th:text="${#temporals.format(pet.birthDate, 'yyyy-MM-dd')}"></span>
-          </p>
+          <dl class="mb-1">
+            <dt>
+              <span class="fa fa-birthday-cake text-muted me-1" aria-hidden="true"></span>
+              <strong th:text="#{birthDate}">Birth Date</strong>
+            </dt>
+            <dd class="ms-4" th:text="${#temporals.format(pet.birthDate, 'yyyy-MM-dd')}"></dd>
+          </dl>
 
           <table class="table table-sm mt-3" th:if="${!pet.visits.isEmpty()}">
             <thead>
